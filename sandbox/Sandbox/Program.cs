@@ -6,5 +6,6 @@ class Program
     {
         Console.WriteLine("Hello Warner's World!");
         Console.WriteLine("Hello. Shall we play a game?");
+        Console.WriteLine("You are a bold one.");
     }
 }
