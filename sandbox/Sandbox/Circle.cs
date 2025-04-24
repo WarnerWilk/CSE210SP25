@@ -8,7 +8,7 @@ class Circle
         radius = r;
     }
 
-    Circle Circle(double r)
+    public Circle(double r)
     {
         radius = r;
     }
