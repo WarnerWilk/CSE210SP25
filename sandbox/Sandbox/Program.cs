@@ -1,28 +1,42 @@
 using System;
+using System.ComponentModel;
 
+class Circle
+{
+    private double _radius;
+    public void SetRadius (double r)
+{
+    if (r< 0){
+        Console.WriteLine("Error");
+    }
+    _radius = r;
+}
 
+public double getRadius()
+{
+
+    return _radius;
+}
+
+public double getArea()
+{
+    return Math.PI * _radius * _radius;
+}
+
+}
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Warner's World!");
-        Console.WriteLine("Hello. Shall we play a game?");
+        // Console.WriteLine("Hello Warner's World!");
+        // Console.WriteLine("Hello. Shall we play a game?");
+        Circle myCircle = new Circle();
+        myCircle.SetRadius(2);
 
-        // double x = 10;
-        Circle myCircle = new Circle(10);
-        // Circle myCircle = new Circle(x);
-        Console.WriteLine($"The area of the circle is {myCircle.GetArea()}");
-        Circle myCircle2 = new Circle(20);
-        Console.WriteLine($"The area of the new circle is {myCircle2.GetArea()}");
+        Console.WriteLine($"{myCircle.getRadius()}");
+        Console.WriteLine($"{myCircle.getArea()}");
 
-        int x = 16;
-        if(x==16)
-        {
-            Console.WriteLine("X is 16");
-        }
-        for(int i= 0; i < x; i++) {
-            Console.WriteLine("Here come the drums");
-            }
+
 // Hello
     }
 }
