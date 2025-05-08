@@ -1,29 +1,7 @@
 using System;
 using System.ComponentModel;
 
-class Circle
-{
-    private double _radius;
-    public void SetRadius (double r)
-{
-    if (r< 0){
-        Console.WriteLine("Error");
-    }
-    _radius = r;
-}
 
-public double getRadius()
-{
-
-    return _radius;
-}
-
-public double getArea()
-{
-    return Math.PI * _radius * _radius;
-}
-
-}
 class Program
 {
     static void Main(string[] args)
@@ -35,6 +13,11 @@ class Program
 
         Console.WriteLine($"{myCircle.getRadius()}");
         Console.WriteLine($"{myCircle.getArea()}");
+
+        cylinder myCylinder = new cylinder();
+        myCylinder.SetHeight(10);
+        myCylinder.SetCircle(myCircle);
+        Console.WriteLine($"{myCylinder.GetVolume()}");
 
 
 // Hello
