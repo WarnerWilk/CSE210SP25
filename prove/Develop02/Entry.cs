@@ -45,7 +45,7 @@ class Entry
         "What kind of person were you today?"
     };
 
-    public string newEntry()
+    public string NewEntry()
     {
         string prompt = Prompts[random.Next(Prompts.Count)];
         Console.WriteLine($"{prompt}");

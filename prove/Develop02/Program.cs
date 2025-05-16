@@ -26,6 +26,7 @@ class Menu
     }
     public void MenuSelect()
     {
+        Journal journal = new Journal();
         Menu menu = new Menu();
         menu.DisplayMenu();
         string input;
@@ -38,22 +39,24 @@ class Menu
             switch (choice)
             {
                 case 1:
-                    // Journal.WriteToFile();
-                    Console.WriteLine("Choice 1 detected.");
-                    Journal journal = new Journal();
-                    journal.newJournalEntry();
+                    //Write new Entry
+                    Console.WriteLine("Write to file detected.");
+                    journal.NewJournalEntry();
                     break;
                 case 2:
                     // Journal.Display();
                     Console.WriteLine("Choice 2 detected.");
+                    journal.DisplayJournal();
                     break;
                 case 3:
-                    // Journal.SaveToFile();
+                    // Save Journal to a file
                     Console.WriteLine("Choice 3 detected.");
+                    journal.SaveJournal();
                     break;
                 case 4:
-                    // Journal.LoadFromFile();
-                    Console.WriteLine("Choice 4 detected.");
+                    //Load Journal from file
+                    Console.WriteLine("Load Journal detected.");
+                    journal.LoadJournal();
                     break;
                 case 5:
                     Console.WriteLine("Exiting program.");

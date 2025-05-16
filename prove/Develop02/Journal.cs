@@ -1,40 +1,54 @@
-using System;
-using System.ComponentModel.Design;
-using System.Xml.Serialization;
-using System.IO;
-using System.Text.Json;
-
-
 class Journal : Entry
 {
-    public List<Entry> JournalEntries = new List<Entry>();
+    public List<string> _journalEntries = new List<string>();
 
-    public void loadJournal()
+    public void LoadJournal()
     {
         Console.WriteLine($"What is the name of the file you want loaded?");
         string fileName = Console.ReadLine();
         try
         {
-
             string[] initialEntries = File.ReadAllLines(fileName);
             List<string> entries = new List<string>(initialEntries);
             Console.WriteLine($"{fileName} was succesfully loaded");
+            _journalEntries = entries;
         }
         catch
         {
             Console.WriteLine($"{fileName} couldn't be loaded");
         }
-        
+
     }
-    public void newJournalEntry()
+    public void NewJournalEntry()
     {
         Entry entry = new Entry();
-
-        Console.WriteLine($"What file do you want this written to? (Include file type such as 'Example.txt')");
+        _journalEntries.Add(entry.NewEntry());
+    }
+    public void SaveJournal()
+    {
+        Console.WriteLine($"What file do you want to save this journal to? (Include file type such as 'Example.txt')");
         string filePath = Console.ReadLine();
         using (StreamWriter writer = new StreamWriter(filePath))
         {
-            writer.WriteLine($"{entry.newEntry()}");
+            foreach (string entry in _journalEntries)
+            {
+                writer.WriteLine($"{entry}");
+            }
         }
+    }
+
+    public void DisplayJournal()
+    {
+        foreach (string entry in _journalEntries)
+        {
+            Console.WriteLine($"{entry}");
+        }
+    }
+
+    public void EditJournal()
+    {
+        
+        Console.WriteLine($"What number entry would you like to edit?");
+
     }
 }
