@@ -25,10 +25,13 @@ class Menu
     }
     public void MenuSelect()
     {
-            string input;
-            int choice = 0;
+        Menu menu = new Menu();
+        menu.DisplayMenu();
+        string input;
+        int choice = 0;
         while (choice != 5)
         {
+            menu.DisplayMenu();
             input = Console.ReadLine();
             choice = Int32.Parse(input);
             switch (choice)
@@ -36,6 +39,8 @@ class Menu
                 case 1:
                     // Journal.WriteToFile();
                     Console.WriteLine("Choice 1 detected.");
+                    Journal newJournal = new Journal();
+                    newJournal.newEntry();
                     break;
                 case 2:
                     // Journal.Display();
@@ -65,7 +70,6 @@ class Program()
     static void Main()
     {
         Menu menu = new Menu();
-        menu.DisplayMenu();
         menu.MenuSelect();
 
     }
