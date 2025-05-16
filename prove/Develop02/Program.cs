@@ -40,7 +40,7 @@ class Menu
                     // Journal.WriteToFile();
                     Console.WriteLine("Choice 1 detected.");
                     Journal newJournal = new Journal();
-                    newJournal.newEntry();
+                    newJournal.();
                     break;
                 case 2:
                     // Journal.Display();
