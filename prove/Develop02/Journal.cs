@@ -56,8 +56,15 @@ class Journal : Entry
     public void RemoveEntry()
     {
         DisplayJournal();
-        Console.WriteLine($"What number entry would you like to remove?");
-        int index = int.Parse(Console.ReadLine());
-        _journalEntries.RemoveAt(index-1);
+        Console.WriteLine($"What number entry would you like to remove?(Integer between 1 and {_journalEntries.Count})");
+        try
+        {
+            int index = int.Parse(Console.ReadLine());
+            _journalEntries.RemoveAt(index - 1);
+        }
+        catch
+        {
+            Console.WriteLine("Invalid input");
+        }
     }
 }
