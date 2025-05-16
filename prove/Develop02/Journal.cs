@@ -11,6 +11,19 @@ class Journal : Entry
 
     public void loadJournal()
     {
+        Console.WriteLine($"What is the name of the file you want loaded?");
+        string fileName = Console.ReadLine();
+        try
+        {
+
+            string[] initialEntries = File.ReadAllLines(fileName);
+            List<string> entries = new List<string>(initialEntries);
+            Console.WriteLine($"{fileName} was succesfully loaded");
+        }
+        catch
+        {
+            Console.WriteLine($"{fileName} couldn't be loaded");
+        }
         
     }
     public void newJournalEntry()
