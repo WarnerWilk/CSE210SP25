@@ -65,7 +65,7 @@ class Journal : Entry
         }
         catch
         {
-            Console.WriteLine("Invalid input");
+            Console.WriteLine("Invalid input, nothing has been removed.");
         }
     }
 }
