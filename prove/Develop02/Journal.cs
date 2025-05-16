@@ -56,6 +56,7 @@ class Journal : Entry
     public void RemoveEntry()
     {
         DisplayJournal();
+        Console.WriteLine("Enter '0' to exit removal.");
         Console.WriteLine($"What number entry would you like to remove?(Integer between 1 and {_journalEntries.Count})");
         try
         {

@@ -46,12 +46,12 @@ class Menu
                     break;
                 case 2:
                     // Journal.Display();
-                    Console.WriteLine("Choice 2 detected.");
+                    Console.WriteLine("Display Journal detected.");
                     journal.DisplayJournal();
                     break;
                 case 3:
                     // Save Journal to a file
-                    Console.WriteLine("Choice 3 detected.");
+                    Console.WriteLine("Save Journal detected.");
                     journal.SaveJournal();
                     break;
                 case 4:
@@ -61,6 +61,7 @@ class Menu
                     break;
                 case 5:
                     //Remove Journal Entry
+                    Console.WriteLine("Remove Entry detected.");
                     journal.RemoveEntry();
                     break;
                 case 6:
