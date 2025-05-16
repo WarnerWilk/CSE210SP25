@@ -21,7 +21,8 @@ class Menu
         Console.WriteLine("2. Display loaded journal");
         Console.WriteLine("3. Save journal to file");
         Console.WriteLine("4. Load journal");
-        Console.WriteLine("5. Exit program");
+        Console.WriteLine("5. Delete Entry");
+        Console.WriteLine("6. Exit program");
 
     }
     public void MenuSelect()
@@ -31,7 +32,7 @@ class Menu
         menu.DisplayMenu();
         string input;
         int choice = 0;
-        while (choice != 5)
+        while (choice != 6)
         {
             menu.DisplayMenu();
             input = Console.ReadLine();
@@ -59,6 +60,10 @@ class Menu
                     journal.LoadJournal();
                     break;
                 case 5:
+                    //Remove Journal Entry
+                    journal.RemoveEntry();
+                    break;
+                case 6:
                     Console.WriteLine("Exiting program.");
                     break;
                 default:
