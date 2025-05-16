@@ -5,9 +5,13 @@ using System.IO;
 using System.Text.Json;
 
 
-// class Journal
-// {
-//     public List<Entry> JournalEntries = new List<Entry>();
+class Journal : Entry
+{
+    public List<Entry> JournalEntries = new List<Entry>();
 
-//     public void 
-// }
+    public void newJournalEntry()
+    {
+        Entry entry = new Entry();
+        
+    }
+}

@@ -40,8 +40,7 @@ class Menu
                 case 1:
                     // Journal.WriteToFile();
                     Console.WriteLine("Choice 1 detected.");
-                    Entry entry = new Entry();
-                    entry.newEntry();
+                    
                     break;
                 case 2:
                     // Journal.Display();
