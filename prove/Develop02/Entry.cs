@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+
 class Entry
 {
     public string randomPrompt()
@@ -51,13 +54,12 @@ class Entry
     }
     public string newEntry()
     {
-        string entry;
         string prompt = randomPrompt();
         Console.WriteLine($"{prompt}");
         string response = Console.ReadLine();
-        DateTime entryDateTime = new DateTime();
-        entry = ($"{entryDateTime} # {prompt} # {response}");
-        // Console.WriteLine($"{entry}");
+        DateTime entryDateTime = DateTime.Now;
+        string entry = ($"{entryDateTime} ` {prompt} ` {response}");
+        Console.WriteLine($"{entry}");
         return entry;
     }
 }
