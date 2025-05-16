@@ -27,19 +27,26 @@ class Journal : Entry
     }
     public void SaveJournal()
     {
-        Console.WriteLine($"Would you like to save to {_fileName}?(Y/N)");
-        if (Console.ReadLine().ToUpper() == "N")
-        {
-        Console.WriteLine($"What file do you want to save this journal to? (Include file type such as 'Example.txt')");
-        _fileName = Console.ReadLine();
-        }
 
-        using (StreamWriter writer = new StreamWriter(_fileName))
-        {
-            foreach (string entry in _journalEntries)
+            Console.WriteLine($"Would you like to save to {_fileName}?(Y/N)");
+            if (Console.ReadLine().ToUpper() == "N")
             {
-                writer.WriteLine($"{entry}");
+                Console.WriteLine($"What file do you want to save this journal to? (Include file type such as 'Example.txt')");
+                _fileName = Console.ReadLine();
             }
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(_fileName))
+            {
+                foreach (string entry in _journalEntries)
+                {
+                    writer.WriteLine($"{entry}");
+                }
+            }
+        }
+        catch
+        {
+            Console.WriteLine("Invalid Name, journal not saved.");
         }
     }
 

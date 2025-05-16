@@ -50,6 +50,7 @@ class Menu
                     journal.DisplayJournal();
                     break;
                 case 3:
+                    //Exceeding Expectations. Default option saves journal to the file that was loaded previously.
                     // Save Journal to a file
                     Console.WriteLine("Save Journal detected.");
                     journal.SaveJournal();
@@ -60,6 +61,7 @@ class Menu
                     journal.LoadJournal();
                     break;
                 case 5:
+                    //Exceeding Expectations
                     //Remove Journal Entry
                     Console.WriteLine("Remove Entry detected.");
                     journal.RemoveEntry();
