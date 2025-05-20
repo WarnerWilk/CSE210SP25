@@ -11,15 +11,15 @@ class Program
         Circle myCircle = new Circle();
         myCircle.SetRadius(2);
 
-        Console.WriteLine($"{myCircle.getRadius()}");
-        Console.WriteLine($"{myCircle.getArea()}");
+        Console.WriteLine($"{myCircle.GetRadius()}");
+        Console.WriteLine($"{myCircle.GetArea()}");
 
-        cylinder myCylinder = new cylinder();
+        Cylinder myCylinder = new Cylinder();
         myCylinder.SetHeight(10);
         myCylinder.SetCircle(myCircle);
         Console.WriteLine($"{myCylinder.GetVolume()}");
 
 
 // Hello
-    }
+}
 }

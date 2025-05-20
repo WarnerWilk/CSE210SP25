@@ -1,7 +1,20 @@
-class cylinder
+class Cylinder
 {
     private Circle _circle;
     private double _height;
+
+
+    public Cylinder()
+    {
+        _height = 0.0;
+        _circle = null;
+    }
+
+    public Cylinder(Circle circle)
+    {
+        _height = 0.0;
+        _circle = circle;
+    }
 
     public void SetHeight(double height)
     {
@@ -14,7 +27,7 @@ class cylinder
 
     public double GetVolume()
     {
-        double radius = _circle.getRadius();
+        double radius = _circle.GetRadius();
         return Math.PI * radius * radius * _height;
     }
 }
