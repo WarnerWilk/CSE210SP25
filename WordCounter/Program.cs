@@ -6,5 +6,6 @@
 
         WordCounter wordCounter = new WordCounter("The quick brown fox jumped over the lazy dog.");
         wordCounter.DisplayWords();
+        Console.WriteLine(wordCounter.CountWords());
     }
 }

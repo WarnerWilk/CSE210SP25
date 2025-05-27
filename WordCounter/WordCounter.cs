@@ -1,7 +1,7 @@
 class WordCounter
 {
     private List<string> _words;
-
+    private int _wordCount = 0;
     public WordCounter(string text)
     {
         _words = new List<string>();
@@ -24,5 +24,14 @@ class WordCounter
         {
             Console.WriteLine(word);
         }
+    }
+
+    public int CountWords()
+    {
+        foreach (string word in _words)
+        {
+            _wordCount += 1;
+        }
+        return _wordCount;
     }
 }
