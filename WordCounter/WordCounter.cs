@@ -34,4 +34,18 @@ class WordCounter
         }
         return _wordCount;
     }
+
+    public int CountSingleWord(string searchWord)
+    {
+        int count = 0;
+
+        foreach (string word in _words)
+        {
+            if (word.ToUpper() == searchWord.ToUpper())
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 }
