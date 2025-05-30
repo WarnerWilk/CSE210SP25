@@ -9,6 +9,7 @@ class Scripture
 
     public void DisplayScripture()
     {
+        Console.Clear();
         Word print = new Word();
         for (int i = 0; i < _words.Count; i++)
         {
