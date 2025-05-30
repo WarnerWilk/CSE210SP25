@@ -15,16 +15,27 @@ class Program
     {
         Console.WriteLine("Hello Develop03 World!");
         Scripture test = new Scripture();
-        string selection = "";
+        string selection = "0";
+
+        while (selection != "3")
+        {
+            DisplayMenu();
+            Console.WriteLine("Please make a selection");
+            selection = Console.ReadLine();
+            if (selection == "1")
+            {
+                test.SetScripture();
+            }
+        }
 
         while (selection.ToUpper() != "QUIT")
-        {
-            test.DisplayScripture();
-            test.RandomWord();
-            Console.WriteLine();
-            Console.WriteLine("Type 'quit' to quit, otherwise, press enter");
-            selection = Console.ReadLine();
-        }
+            {
+                test.DisplayScripture();
+                test.RandomWord();
+                Console.WriteLine();
+                Console.WriteLine("Type 'quit' to quit, otherwise, press enter");
+                selection = Console.ReadLine();
+            }
     }
 
 }

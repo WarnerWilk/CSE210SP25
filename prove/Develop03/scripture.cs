@@ -2,15 +2,16 @@ using System.Drawing;
 
 class Scripture
 {
-    private string _reference;
-    private List<string> _words = new List<string> {"Hello", "there", "I", "am", "Bob"};
-    private List<int> _hiddenwords = new List<int> {};
+    private List<string> _words = new List<string> {"In", "the", "beginning", "God", "created", "the", "heavens", "and", "the", "earth."};
+    private List<int> _hiddenwords = new List<int> { };
     //private int _difficulty;
+    private Reference _reference = new Reference();
 
     public void DisplayScripture()
     {
         Console.Clear();
         Word print = new Word();
+        Console.WriteLine(_reference.GetReference());
         for (int i = 0; i < _words.Count; i++)
         {
             print.ChangeWord(_words[i]);
@@ -35,12 +36,29 @@ class Scripture
             _hiddenwords.Clear();
         }
         do
-            {
-                randomIndex = selection.Next(0, verselength);
-            }
-            while (_hiddenwords.Contains(randomIndex));
+        {
+            randomIndex = selection.Next(0, verselength);
+        }
+        while (_hiddenwords.Contains(randomIndex));
         _hiddenwords.Add(randomIndex);
         return randomIndex;
+    }
+
+    public void SetScripture()
+    {
+        Console.WriteLine("What book is the scripture in? (e.g. Genesis, Matthew, 1 Nephi, Doctrine and Covenants, Abraham, etc.)");
+        string book = Console.ReadLine();
+        Console.WriteLine("What chapter?");
+        int chapter = int.Parse(Console.ReadLine());
+        Console.WriteLine("Starting with what verse?");
+        int startverse = int.Parse(Console.ReadLine());
+        Console.WriteLine("Ending with what verse?(Just put in the same as previous if it's only one verse)");
+        int endverse = int.Parse(Console.ReadLine());
+        _reference.SetReference(book, chapter, startverse, endverse);
+        Console.WriteLine("What is the text of the verse?");
+        string contents = Console.ReadLine();
+        string[] splitverse = contents.Split(" ");
+        _words = splitverse.ToList();
     }
 
 }
