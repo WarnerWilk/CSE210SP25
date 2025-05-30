@@ -15,11 +15,15 @@ class Program
     {
         Console.WriteLine("Hello Develop03 World!");
         Scripture test = new Scripture();
-        
-        for (int i = 0; i < 3; i++)
+        string selection = "";
+
+        while (selection.ToUpper() != "QUIT")
         {
             test.RandomWord();
             test.DisplayScripture();
+            Console.WriteLine();
+            Console.WriteLine("Type 'quit' to quit, otherwise, press enter");
+            selection = Console.ReadLine();
         }
     }
 
