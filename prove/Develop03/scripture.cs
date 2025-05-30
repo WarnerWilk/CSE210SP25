@@ -1,19 +1,26 @@
+using System.Drawing;
+
 class Scripture
 {
     private string _reference;
-    private List<string> _words;
-    private List<int> _hiddenwords;
+    private List<string> _words = new List<string> {"Hello", "there", "I", "am", "Bob"};
+    private List<int> _hiddenwords = new List<int> {};
     //private int _difficulty;
 
     public void DisplayScripture()
     {
-        //TODO
-        //Send random index to HideWord, change that word to underscores in _words, then have some way to save 
-        // what words have been removed, and prevent that word from being removed again.
-
-        foreach (string word in _words)
+        Word print = new Word();
+        for (int i = 0; i < _words.Count; i++)
         {
-            Console.Write($"{word} ");
+            print.ChangeWord(_words[i]);
+            if (_hiddenwords.Contains(i))
+            {
+                print.Hide();
+            }
+            else
+            {
+                print.Display();
+            }
         }
     }
 
@@ -26,7 +33,7 @@ class Scripture
         {
             randomIndex = selection.Next(0, verselength);
         }
-        while (!_hiddenwords.Contains(randomIndex));
+        while (_hiddenwords.Contains(randomIndex));
         _hiddenwords.Add(randomIndex);
         return randomIndex;
     }

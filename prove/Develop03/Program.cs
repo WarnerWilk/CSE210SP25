@@ -14,7 +14,13 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Develop03 World!");
-
+        Scripture test = new Scripture();
+        
+        for (int i = 0; i < 3; i++)
+        {
+            test.RandomWord();
+            test.DisplayScripture();
+        }
     }
 
 }
