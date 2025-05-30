@@ -19,8 +19,8 @@ class Program
 
         while (selection.ToUpper() != "QUIT")
         {
-            test.RandomWord();
             test.DisplayScripture();
+            test.RandomWord();
             Console.WriteLine();
             Console.WriteLine("Type 'quit' to quit, otherwise, press enter");
             selection = Console.ReadLine();

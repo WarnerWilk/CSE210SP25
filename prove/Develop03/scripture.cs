@@ -30,11 +30,15 @@ class Scripture
         int verselength = _words.Count();
         int randomIndex;
         Random selection = new Random();
-        do
+        if (_hiddenwords.Count == _words.Count)
         {
-            randomIndex = selection.Next(0, verselength);
+            _hiddenwords.Clear();
         }
-        while (_hiddenwords.Contains(randomIndex));
+        do
+            {
+                randomIndex = selection.Next(0, verselength);
+            }
+            while (_hiddenwords.Contains(randomIndex));
         _hiddenwords.Add(randomIndex);
         return randomIndex;
     }
