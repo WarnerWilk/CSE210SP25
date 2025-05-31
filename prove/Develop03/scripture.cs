@@ -6,6 +6,12 @@ class Scripture
     private List<int> _hiddenwords = new List<int> { };
     //private int _difficulty;
     private Reference _reference = new Reference();
+    private int _difficulty = 1;
+
+    public void SetDifficulty()
+    {
+        Console.WriteLine($"How many words would you like to disappear each time?(recommended that you don't select more than {_words.Count()})");
+    }
 
     public void DisplayScripture()
     {
@@ -14,6 +20,10 @@ class Scripture
         Console.WriteLine(_reference.GetReference());
         for (int i = 0; i < _words.Count; i++)
         {
+            for (int r = 0; r < _difficulty; r++)
+            {
+                RandomWord();
+            }
             print.ChangeWord(_words[i]);
             if (_hiddenwords.Contains(i))
             {
