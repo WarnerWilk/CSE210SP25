@@ -1,4 +1,4 @@
-class Assignment
+public class Assignment
 {
     string _studentName;
     string _topic;
