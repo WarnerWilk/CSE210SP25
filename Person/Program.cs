@@ -6,7 +6,10 @@
 
         Console.WriteLine(myPerson.GetPersonInformation());
 
-        Policeman myPoliceman = new Policeman("Cooper", "Steves", 30);
-        Console.WriteLine(myPoliceman.GetPersonInformation());
+        Policeman myPoliceman = new Policeman("Steves", "Cooper", 30, "Gun");
+        Console.WriteLine(myPoliceman.GetPoliceInformation());
+
+        Doctor theDoctor = new Doctor("Smith", "John", 906, "Sonic Screwdriver");
+        Console.WriteLine(theDoctor.GetDoctorInformation());
     }
 }

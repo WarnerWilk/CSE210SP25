@@ -10,10 +10,15 @@ public class WritingAssignment : Assignment
 
         _title = title;
     }
-    public string GetWritingAssignment()
+    public string GetWritingHomework()
     {
         string assignment = _title;
         return assignment;
+    }
+
+    public string GetWritingAssignment()
+    {
+        return $"{GetSummary()}Assignment: {GetWritingHomework()}";
     }
 
 }

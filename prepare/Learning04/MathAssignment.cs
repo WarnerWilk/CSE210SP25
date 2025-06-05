@@ -19,4 +19,8 @@ public class MathAssignment : Assignment
         string homeworkList = $"{_textbookSection} Problems {_problems}";
         return homeworkList;
     }
+    public string GetMathAssignmentInformation()
+    {
+        return $"{GetSummary()}Assignment: {GetHomeworkList()}";
+    }
 }

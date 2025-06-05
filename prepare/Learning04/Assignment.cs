@@ -20,7 +20,7 @@ public class Assignment
 
     public string GetSummary()
     {
-        string summary = $"Name: {_studentName}\nTopic: {_topic}";
+        string summary = $"Name: {_studentName}\nTopic: {_topic}\n";
         return summary;
     }
 }
