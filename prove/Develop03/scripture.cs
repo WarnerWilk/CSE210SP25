@@ -10,7 +10,18 @@ class Scripture
 
     public void SetDifficulty()
     {
-        Console.WriteLine($"How many words would you like to disappear each time?(recommended that you don't select more than {_words.Count()})");
+        Console.WriteLine($"How many words would you like to disappear each time?");
+        
+        difficulty = Parse.int(Console.ReadLine());
+        
+        if (difficulty > _words.length())
+        {
+            _difficulty = _words.length();
+        }
+        else if (difficulty < _words.length())
+        {
+            _difficulty = difficulty;
+        }
     }
 
     public void DisplayScripture()
@@ -32,6 +43,10 @@ class Scripture
             else
             {
                 print.Display();
+            }
+            if (_hiddenwords.length() == _words.length())
+            {
+                selection = "quit";
             }
         }
     }
