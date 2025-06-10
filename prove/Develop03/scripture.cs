@@ -11,20 +11,20 @@ class Scripture
     public void SetDifficulty()
     {
         Console.WriteLine($"How many words would you like to disappear each time?");
+        string response = Console.ReadLine();
+        int difficulty = Int32.Parse(response);
         
-        difficulty = Parse.int(Console.ReadLine());
-        
-        if (difficulty > _words.length())
+        if (difficulty > _words.Count())
         {
-            _difficulty = _words.length();
+            _difficulty = _words.Count();
         }
-        else if (difficulty < _words.length())
+        else if (difficulty < _words.Count())
         {
             _difficulty = difficulty;
         }
     }
 
-    public void DisplayScripture()
+    public string DisplayScripture()
     {
         Console.Clear();
         Word print = new Word();
@@ -44,11 +44,12 @@ class Scripture
             {
                 print.Display();
             }
-            if (_hiddenwords.length() == _words.length())
-            {
-                selection = "quit";
-            }
         }
+        if (_hiddenwords.Count() == _words.Count())
+        {
+            return "quit";
+        }
+        return "0";
     }
 
     public int RandomWord()

@@ -34,7 +34,7 @@ class Program
             {
                 while (selection.ToUpper() != "QUIT")
                 {
-                    test.DisplayScripture();
+                    selection = (test.DisplayScripture());
                     Console.WriteLine();
                     Console.WriteLine("Type 'quit' to quit, otherwise, press enter");
                     selection = Console.ReadLine();
