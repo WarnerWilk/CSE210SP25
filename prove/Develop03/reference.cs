@@ -35,7 +35,7 @@ class Reference
 
     public Reference(string book, int chapter)
     {
-        _book = "Genesis";
+        _book = book;
         _chapter = chapter;
         _startverse = 1;
         _endverse = 1;
@@ -43,7 +43,7 @@ class Reference
 
     public Reference(string book, int chapter, int startverse)
     {
-        _book = "Genesis";
+        _book = book;
         _chapter = chapter;
         _startverse = startverse;
         _endverse = startverse;
@@ -51,7 +51,7 @@ class Reference
 
     public Reference(string book, int chapter, int startverse, int endverse)
     {
-        _book = "Genesis";
+        _book = book;
         _chapter = chapter;
         _startverse = startverse;
         _endverse = endverse;
@@ -59,7 +59,7 @@ class Reference
 
     public void SetReference(string book, int chapter, int startverse, int endverse)
     {
-        _book = "Genesis";
+        _book = book;
         _chapter = chapter;
         _startverse = startverse;
         _endverse = endverse;
