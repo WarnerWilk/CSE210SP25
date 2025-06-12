@@ -9,6 +9,7 @@ class Program
         Console.WriteLine("1. Set scripture to be memorized.");
         Console.WriteLine("2. Set memorization difficulty.");
         Console.WriteLine("3. Memorize scripture.");
+        Console.WriteLine("Enter 'quit' to quit.");
     }
 
     static void Main(string[] args)
@@ -17,7 +18,7 @@ class Program
         Scripture test = new Scripture();
         string selection = "0";
 
-        while (selection != "3")
+        while (selection.ToUpper() != "QUIT")
         {
             DisplayMenu();
             Console.WriteLine("Please make a selection");
@@ -38,8 +39,12 @@ class Program
                     Console.WriteLine();
                     Console.WriteLine("Type 'quit' to quit, otherwise, press enter");
                     selection = Console.ReadLine();
+                    if (test.GetHiddenWordQuantity() == test.GetWordQuantity())
+                    {
+                        selection = "quit";
+                    }
                 }
-                selection = "3";
+                
             }
             else
             {

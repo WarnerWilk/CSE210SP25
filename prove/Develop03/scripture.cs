@@ -2,7 +2,7 @@ using System.Drawing;
 
 class Scripture
 {
-    private List<string> _words = new List<string> {"In", "the", "beginning", "God", "created", "the", "heavens", "and", "the", "earth."};
+    private List<string> _words = new List<string> { "In", "the", "beginning", "God", "created", "the", "heavens", "and", "the", "earth." };
     private List<int> _hiddenwords = new List<int> { };
     //private int _difficulty;
     private Reference _reference = new Reference();
@@ -13,14 +13,19 @@ class Scripture
         Console.WriteLine($"How many words would you like to disappear each time?");
         string response = Console.ReadLine();
         int difficulty = Int32.Parse(response);
-        
+
         if (difficulty > _words.Count())
         {
             _difficulty = _words.Count();
+            Console.WriteLine("Error: User entered a difficulty larger than the number of words in the scripture.\nDifficulty set to hide all words.");
         }
-        else if (difficulty < _words.Count())
+        else if (difficulty <= _words.Count())
         {
             _difficulty = difficulty;
+        }
+        else if (difficulty < 0)
+        {
+            Console.WriteLine("Error: User entered a negative number.");
         }
     }
 
@@ -29,12 +34,12 @@ class Scripture
         Console.Clear();
         Word print = new Word();
         Console.WriteLine(_reference.GetReference());
+        for (int r = 0; r < _difficulty; r++)
+        {
+            RandomWord();
+        }
         for (int i = 0; i < _words.Count; i++)
         {
-            for (int r = 0; r < _difficulty; r++)
-            {
-                RandomWord();
-            }
             print.ChangeWord(_words[i]);
             if (_hiddenwords.Contains(i))
             {
@@ -87,4 +92,12 @@ class Scripture
         _words = splitverse.ToList();
     }
 
+    public int GetHiddenWordQuantity()
+    {
+        return _hiddenwords.Count();
+    }
+    public int GetWordQuantity()
+    {
+        return _words.Count();
+    }
 }
