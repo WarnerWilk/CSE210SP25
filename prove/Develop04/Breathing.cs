@@ -8,7 +8,7 @@ class Breathing : Activity
         for (int i = 0; i < _duration/4; i++)
         {
             Console.WriteLine(_breaths[i % 2]);
-            Thread.Sleep(4000);
+            Wait(4, "");
         }
         EndActivity();
     }
