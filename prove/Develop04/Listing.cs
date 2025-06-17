@@ -1,6 +1,13 @@
 class Listing : Activity
 {
     private List<string> _responses = [];
+
+    private int _selectedPrompt;
+
+    private Random _promptIndex = new Random();
+
+    private DateTime _endTime;
+
     private List<string> _prompts =
     ["Who are people that you appreciate?",
     "What are personal strengths of yours?",
@@ -27,22 +34,21 @@ class Listing : Activity
     public void StartListing()
     {
         StartActivity();
-        for (int i = 0; i < _duration; i++)
+        _selectedPrompt = _promptIndex.Next(0, _prompts.Count());
+        Console.WriteLine(_prompts[_selectedPrompt]);
+        Wait(9, "COUNTDOWN");
+        _endTime = DateTime.Now.AddSeconds(_duration);
+        while (DateTime.Now < _endTime)
         {
-            Random prompt = new Random();
-            Console.WriteLine(_prompts[prompt.Next(0, _prompts.Count())]);
-
-            Wait(9, "COUNTDOWN");
-            while (i < _duration)
-            {
-                Console.WriteLine("List off anything that comes to mind, then press 'Enter'");
-                _responses.Add(Console.ReadLine());
-                Console.Clear();
-                i++;
-                Thread.Sleep(1000);
-            }
-            Thread.Sleep(1000);
+            Console.WriteLine("List off anything that comes to mind, then press 'Enter'");
+            _responses.Add(Console.ReadLine());
+        }
+        Console.WriteLine($"You wrote {_responses.Count()} responses.\nYour responses to '{_prompts[_selectedPrompt]}' were:");
+        for (int i = 0; i < _responses.Count(); i++)
+        {
+            Console.WriteLine($"{_responses[i]}");
         }
         EndActivity();
+
     }
 }

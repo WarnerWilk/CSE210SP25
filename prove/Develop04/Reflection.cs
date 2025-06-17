@@ -1,5 +1,6 @@
 class Reflection : Activity
 {
+    private DateTime _endTime;
     List<string> _prompts =
     ["Think of a time when you stood up for someone else.",
     "Think of a time when you did something really difficult.",
@@ -48,7 +49,8 @@ class Reflection : Activity
         public void StartReflection()
     {
         StartActivity();
-        for (int i = 0; i < _duration / 30; i++)
+        _endTime = DateTime.Now.AddSeconds(_duration);
+        while (DateTime.Now < _endTime)
         {
             Random prompt = new Random();
             Random question = new Random();
