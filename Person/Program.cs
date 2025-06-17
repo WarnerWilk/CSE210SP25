@@ -2,7 +2,7 @@
 {
     public static void Main(string[] args)
     {
-        Person myPerson = new Person("Bubba", "Bob", 53);
+        // Person myPerson = new Person("Bubba", "Bob", 53);
 
         // Console.WriteLine(myPerson.GetPersonInformation());
 
@@ -13,18 +13,20 @@
         // Console.WriteLine(theDoctor.GetDoctorInformation());
 
         List<Person> myPeople = new List<Person>();
-        myPeople.Add(myPerson);
+        // myPeople.Add(myPerson);
         myPeople.Add(myPoliceman);
         myPeople.Add(theDoctor);
 
         foreach (Person person in myPeople)
         {
             DisplayPersonInformation(person);
+            
         }
     }
 
-        private static void DisplayPersonInformation(Person person)
+    private static void DisplayPersonInformation(Person person)
     {
-        Console.WriteLine(person.GetPersonInformation());
+        Console.Write(person.GetPersonInformation());
+        Console.Write($" Salary: {person.GetSalary()}\n");
     }
 }
