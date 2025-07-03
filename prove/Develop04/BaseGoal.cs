@@ -24,8 +24,21 @@ class BaseGoal
     {
         return _pointsTotal;
     }
-    public abstract void CreateGoal()
+    public void RecordEvent()
     {
-        
+        _completions++;
+        EarnPoints();
+    }
+    public string GetGoal()
+    {
+        string goal;
+        if (_completed == true)
+        {
+            goal = $"[X]#{_goalName}#{_goalDescription}#Points/Completion: {_pointsValue}#Total Points: {_pointsTotal}#Completion: {_completions}/{_maxCompletions}"
+        } else
+        {
+            goal = $"[ ]#{_goalName}#{_goalDescription}#Points/Completion: {_pointsValue}#Total Points: {_pointsTotal}#Completion: {_completions}/{_maxCompletions}"
+        }
+        return goal;
     }
 }
