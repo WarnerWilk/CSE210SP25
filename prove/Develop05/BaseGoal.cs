@@ -8,7 +8,7 @@ class BaseGoal
     protected double _maxCompletions;
     protected bool _completed;
 
-    public BaseGoal(int pointsValue, string goalName, string goalDescription, int maxCompletions)
+    public BaseGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions)
     {
         _pointsValue = pointsValue;
         _goalName = goalName;

@@ -1,19 +1,18 @@
 class EternalGoal : BaseGoal
 {
-    private int _benchmark;
-    private int _bonusPoints;
-    public EternalGoal(int pointsValue, string goalName, string goalDescription, int maxCompletions, int bonusPoints) :
+    private double _benchmark;
+    public EternalGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions) :
     base(pointsValue, goalName, goalDescription, maxCompletions)
     {
         double infinite = double.PositiveInfinity;
         SetMaxCompletions(infinite);
         _benchmark = maxCompletions;
-        _bonusPoints = bonusPoints;
+
 
     }
     private void EarnBonusPoints()
     {
-        _pointsTotal += _bonusPoints;
+        _pointsTotal += _pointsValue;
     }
     public override void RecordEvent()
     {
@@ -21,7 +20,6 @@ class EternalGoal : BaseGoal
         EarnPoints();
         if ((_completions % _benchmark) == 0)
         {
-            
             EarnBonusPoints();
         }
     }
