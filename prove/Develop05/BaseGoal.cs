@@ -5,7 +5,7 @@ class BaseGoal
     protected int _completions;
     protected string _goalName;
     protected string _goalDescription;
-    protected int _maxCompletions;
+    protected double _maxCompletions;
     protected bool _completed;
 
     public BaseGoal(int pointsValue, string goalName, string goalDescription, int maxCompletions)
@@ -16,7 +16,7 @@ class BaseGoal
         _maxCompletions = maxCompletions;
     }
 
-    public void SetMaxCompletions(int maxCompletions)
+    public void SetMaxCompletions(double maxCompletions)
     {
         _maxCompletions = maxCompletions;
     }
