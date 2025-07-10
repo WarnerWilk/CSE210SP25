@@ -2,29 +2,29 @@ using System.Collections;
 
 class Goals
 {
-    private List<string> _goals = new List<string>();
+    private List<BaseGoal> _goals = new List<BaseGoal>();
 private string _fileName = "";
 
-    public void GoalToList(string goal)
+    public void GoalToList(BaseGoal goal)
     {
         _goals.Add(goal);
     }
 
-    public void LoadGoals()
-    {
-        Console.WriteLine($"What is the name of the file you want to load?");
-        _fileName = Console.ReadLine();
-        try
-        {
-            string[] loadedGoals = File.ReadAllLines(_fileName);
-            _goals = new List<string>(loadedGoals);
-            Console.WriteLine($"{_fileName} was successfully loaded.");
-        }
-        catch
-        {
-            Console.WriteLine($"{_fileName} couldn't be loaded.");
-        }
-    }
+    // public void LoadGoals()
+    // {
+    //     Console.WriteLine($"What is the name of the file you want to load?");
+    //     _fileName = Console.ReadLine();
+    //     try
+    //     {
+    //         BaseGoal loadedGoals = File.ReadAllLines(_fileName);
+    //         _goals = new List<BaseGoal>(loadedGoals);
+    //         Console.WriteLine($"{_fileName} was successfully loaded.");
+    //     }
+    //     catch
+    //     {
+    //         Console.WriteLine($"{_fileName} couldn't be loaded.");
+    //     }
+    // }
 
 public void SaveGoals()
 {
@@ -39,7 +39,7 @@ public void SaveGoals()
     {
         using (StreamWriter writer = new StreamWriter(_fileName))
         {
-            foreach (string goal in _goals)
+            foreach (BaseGoal goal in _goals)
             {
                 writer.WriteLine(goal);
             }
@@ -77,7 +77,7 @@ public void NewGoal()
                 Console.WriteLine("How many points do you want to earn?");
                 earnedPoints = Int32.Parse(Console.ReadLine());
                 SimpleGoal simpleGoal = new SimpleGoal(earnedPoints, goalName, goalDescription, maxCompletions);
-                GoalToList(simpleGoal.GetGoal());
+                GoalToList(simpleGoal);
                 break;
             case "2":
             case "Checklist Goal":
@@ -89,7 +89,7 @@ public void NewGoal()
                 Console.WriteLine("How many bonus points do you want to earn once completed?");
                 bonusPoints = Int32.Parse(Console.ReadLine());
                 CheckGoal checkGoal = new CheckGoal(earnedPoints, goalName, goalDescription, maxCompletions, bonusPoints);
-                GoalToList(checkGoal.GetGoal());
+                GoalToList(checkGoal);
                 break;
             case "3":
             case "Eternal Goal":
@@ -99,7 +99,7 @@ public void NewGoal()
                 Console.WriteLine("How many points do you want to earn?");
                 earnedPoints = Int32.Parse(Console.ReadLine());
                 EternalGoal eternalGoal = new EternalGoal(earnedPoints, goalName, goalDescription, maxCompletions);
-                GoalToList(eternalGoal.GetGoal());
+                GoalToList(eternalGoal);
                 break;
             
         }
@@ -110,14 +110,15 @@ public void NewGoal()
 public void RecordGoalEvent()
 {
     Console.WriteLine("Select a goal to record an event:");
-    for (int i = 0; i < _goals.Count; i++)
-    {
-        Console.WriteLine($"{i + 1}. {_goals[i]}");
-    }
+        for (int i = 0; i < _goals.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_goals[i]}");
+            
+        }
 
     if (int.TryParse(Console.ReadLine(), out int selection) && selection >= 1 && selection <= _goals.Count)
     {
-        
+        _goals[selection].RecordEvent();
         Console.WriteLine($"Event recorded for goal: {_goals[selection - 1]}");
     }
     else

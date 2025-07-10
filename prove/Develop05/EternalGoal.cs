@@ -7,8 +7,6 @@ class EternalGoal : BaseGoal
         double infinite = double.PositiveInfinity;
         SetMaxCompletions(infinite);
         _benchmark = maxCompletions;
-
-
     }
     private void EarnBonusPoints()
     {

@@ -16,6 +16,28 @@ class BaseGoal
         _maxCompletions = maxCompletions;
     }
 
+    virtual public int GetPointValue()
+    {
+        return _pointsValue;
+    }
+
+    virtual public string GetName()
+    {
+        return _goalName;
+    }
+    virtual public string GetDescription()
+    {
+        return _goalDescription;
+    }
+    virtual public double GetMax()
+    {
+        return _maxCompletions;
+    }
+    virtual public int GetCompletion()
+    {
+        return _completions;
+    }
+
     public void SetMaxCompletions(double maxCompletions)
     {
         _maxCompletions = maxCompletions;

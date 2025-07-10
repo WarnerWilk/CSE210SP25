@@ -2,43 +2,24 @@ using System;
 using System.ComponentModel;
 using System.IO.Compression;
 
-
 class Program
 {
+
+    static void TestByteRef(int x, ref string name)
+    {
+        x++;
+        name += " plus Betty";
+        Console.WriteLine($"In TestByte: {x}, {name}");
+    }
     static void Main(string[] args)
     {
+        Console.WriteLine("Hello World!");
 
-        int sleepTime = 250;
+        int x = 10;
+        string name = "Bob";
 
-        int time = 9;
-        Console.WriteLine("Yo Bob");
+        TestByteRef(x, ref name);
 
-        DateTime currentTime = DateTime.Now;
-        DateTime endTime = currentTime.AddSeconds(20);
-
-        int count = time;
-
-        while (DateTime.Now < endTime)
-        {
-            Console.Write(count--);
-            Thread.Sleep(1000);
-            Console.Write("\b");
-        }
-
-        string animationString = "(^_^)(^_-)";
-
-        while (DateTime.Now < endTime)
-        {
-            Thread.Sleep(500);
-            Console.Write(animationString[0..5]);
-            Thread.Sleep(sleepTime);
-            Console.Write("\b\b\b\b\b");
-            Console.Write(animationString[5..]);
-            // Console.Write("-");
-            Thread.Sleep(sleepTime);
-            Console.Write("\b\b\b\b\b");
-        }
-
-// Hello
+        Console.WriteLine($"In Main: {x}, {name}");
     }
 }

@@ -12,7 +12,7 @@ class Program
         {
             Console.WriteLine("\nPlease choose an action:");
             Console.WriteLine("1. Save Goals");
-            Console.WriteLine("2. Load Goals");
+            // Console.WriteLine("2. Load Goals");
             Console.WriteLine("3. New Goal");
             Console.WriteLine("4. Record Goal Event");
             Console.WriteLine("5. Quit");
@@ -26,10 +26,10 @@ class Program
                     goals.SaveGoals();
                     break;
 
-                case "2":
-                case "Load Goals":
-                    goals.LoadGoals();
-                    break;
+                // case "2":
+                // case "Load Goals":
+                //     goals.LoadGoals();
+                //     break;
 
                 case "3":
                 case "New Goal":
