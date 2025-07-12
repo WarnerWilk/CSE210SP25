@@ -1,6 +1,13 @@
 class EternalGoal : BaseGoal
 {
     private double _benchmark;
+    public EternalGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions) :
+    base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions)
+    {
+        double infinite = double.PositiveInfinity;
+        SetMaxCompletions(infinite);
+        _benchmark = maxCompletions;
+    }
     public EternalGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions) :
     base(pointsValue, goalName, goalDescription, maxCompletions)
     {

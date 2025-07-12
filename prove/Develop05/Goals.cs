@@ -10,21 +10,40 @@ private string _fileName = "";
         _goals.Add(goal);
     }
 
-    // public void LoadGoals()
-    // {
-    //     Console.WriteLine($"What is the name of the file you want to load?");
-    //     _fileName = Console.ReadLine();
-    //     try
-    //     {
-    //         BaseGoal loadedGoals = File.ReadAllLines(_fileName);
-    //         _goals = new List<BaseGoal>(loadedGoals);
-    //         Console.WriteLine($"{_fileName} was successfully loaded.");
-    //     }
-    //     catch
-    //     {
-    //         Console.WriteLine($"{_fileName} couldn't be loaded.");
-    //     }
-    // }
+    public void LoadGoals()
+    {
+        Console.WriteLine($"What is the name of the file you want to load?");
+        _fileName = Console.ReadLine();
+        try
+        {
+            string[] loadedGoals = File.ReadAllLines(_fileName);
+            foreach (string goal in loadedGoals)
+            {
+
+                string[] split = goal.Split("#");
+                switch (split[5])
+                {
+                    case "1":
+                        CheckGoal checkGoal = new CheckGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[4]), Int32.Parse(split[5]), Int32.Parse(split[6]));
+                        _goals.Add(checkGoal);
+                        break;
+                    case "∞":
+                        EternalGoal eternalGoal = new EternalGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[4]), Int32.Parse(split[5]));
+                        _goals.Add(eternalGoal);
+                        break;
+                    default:
+                        SimpleGoal simpleGoal = new SimpleGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[4]), Int32.Parse(split[5]));
+                        _goals.Add(simpleGoal);
+                        break;
+                }
+            }
+            Console.WriteLine($"{_fileName} was successfully loaded.");
+        }
+        catch
+        {
+            Console.WriteLine($"{_fileName} couldn't be loaded.");
+        }
+    }
 
 public void SaveGoals()
 {
@@ -41,7 +60,7 @@ public void SaveGoals()
         {
             foreach (BaseGoal goal in _goals)
             {
-                writer.WriteLine(goal);
+                writer.WriteLine(goal.GetGoal());
             }
         }
         Console.WriteLine("Goals saved successfully.");
@@ -112,19 +131,14 @@ public void RecordGoalEvent()
     Console.WriteLine("Select a goal to record an event:");
         for (int i = 0; i < _goals.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {_goals[i]}");
+            Console.WriteLine($"{i + 1}. {_goals[i].GetGoal()}");
             
         }
 
-    if (int.TryParse(Console.ReadLine(), out int selection) && selection >= 1 && selection <= _goals.Count)
-    {
-        _goals[selection].RecordEvent();
-        Console.WriteLine($"Event recorded for goal: {_goals[selection - 1]}");
-    }
-    else
-    {
-        Console.WriteLine("Invalid selection.");
-    }
+        // int selection = Int32.Parse(Console.ReadLine());
+        // _goals[selection].RecordEvent();
+        // Console.WriteLine($"Event recorded for goal: {_goals[selection - 1]}");
+
 }
 
 }
