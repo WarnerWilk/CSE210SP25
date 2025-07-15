@@ -15,8 +15,9 @@ class Program
             Console.WriteLine("2. Load Goals");
             Console.WriteLine("3. New Goal");
             Console.WriteLine("4. Record Goal Event");
-            Console.WriteLine("5. Quit");
-            Console.Write("Enter your choice (1-5): ");
+            Console.WriteLine("5. Display loaded goals");
+            Console.WriteLine("6. Quit");
+            Console.WriteLine("Enter your choice (1-6): ");
             string input = Console.ReadLine();
 
             switch (input)
