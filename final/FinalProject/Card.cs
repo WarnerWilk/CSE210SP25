@@ -4,11 +4,11 @@ using System.Runtime.CompilerServices;
 abstract class Card
 {
     protected string _name, _cardText;
-    private List<int> _manaCost = [0,0,0,0,0,0];
+    protected List<int> _manaCost = [0,0,0,0,0,0];
     protected bool _isLegendary;
     protected string _colorIdentity;
     protected string _cardType;
-    Card(string name, string cardText, List<int> manaCost, bool isLegendary, string colorIdentity)
+    protected Card(string name, string cardText, List<int> manaCost, bool isLegendary, string colorIdentity)
     {
         _name = name;
         _cardText = cardText;
@@ -16,13 +16,13 @@ abstract class Card
         _isLegendary = isLegendary;
         _colorIdentity = colorIdentity;
     }
-    Card(string name, List<int> manaCost)
+    protected Card(string name, List<int> manaCost)
     {
         _name = name;
         _manaCost = manaCost;
         _isLegendary = false;
     }
-    Card(string name)
+    protected Card(string name)
     {
         _name = name;
         _isLegendary = false;
@@ -40,15 +40,15 @@ abstract class Card
         return _isLegendary;
     }
     abstract public int GetPower();
-    abstract public void TakeDamage();
-    abstract public Dictionary<string, int> ManaTap();
+    abstract public void TakeDamage(int damage);
+    abstract public List<int> ManaTap();
 
-    public string GetCMC() //returns the decoded mana cost
+    public string GetCMC(List<int> mana) //returns the decoded mana cost
     {
         string convertedManaCost = "";
         List<string> colors = ["red", "green", "blue", "white", "black", "colorless"];
         int i = 0;
-        foreach (int item in _manaCost)
+        foreach (int item in mana)
         {
             if (item != 0)
             {
@@ -58,9 +58,13 @@ abstract class Card
         }
         return convertedManaCost;
     }
+    public string GetCMC()
+    {
+        return GetCMC(_manaCost);
+    }
     virtual public string GetCardInfo()
     {
-        string cardInfo = $"Card Information:\nName: {_name}\nCard Type: {_cardType}\nMana Cost: {GetCMC()}\nColor Identity: {_colorIdentity}\nCard Text: {_cardText}";
+        string cardInfo = $"Card Information:\nName: {_name}\nCard Type: {_cardType}\nMana Cost: {GetCMC(_manaCost)}\nColor Identity: {_colorIdentity}\nCard Text: {_cardText}";
         return cardInfo;
     }
 
