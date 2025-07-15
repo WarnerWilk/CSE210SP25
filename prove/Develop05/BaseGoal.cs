@@ -15,13 +15,22 @@ class BaseGoal
         _goalDescription = goalDescription;
         _maxCompletions = maxCompletions;
     }
-    public BaseGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions)
+    public BaseGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions, int pointsTotal)
     {
+        _pointsTotal = pointsTotal;
         _pointsValue = pointsValue;
         _goalName = goalName;
         _goalDescription = goalDescription;
         _maxCompletions = maxCompletions;
         _completions = totalCompletions;
+        if (totalCompletions >= maxCompletions)
+        {
+            _completed = true;
+        }
+        else
+        {
+            _completed = false;
+        }
     }
 
     virtual public int GetPointValue()
@@ -61,12 +70,20 @@ class BaseGoal
     }
     public virtual void RecordEvent()
     {
+        if (_completed == true)
+        {
+            Console.WriteLine("Sorry, this goal is already completed.");
+        }
+        else
+        {
         _completions++;
         EarnPoints();
         if (_completions >= _maxCompletions)
         {
             _completed = true;
         }
+        }
+
     }
 
     virtual public string WriteGoal()

@@ -1,7 +1,7 @@
 class SimpleGoal : BaseGoal
 {
-    public SimpleGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions) :
-    base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions)
+    public SimpleGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions, int pointsTotal) :
+    base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions, pointsTotal)
     {
         SetMaxCompletions(1);
     }

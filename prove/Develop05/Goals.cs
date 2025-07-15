@@ -4,6 +4,7 @@ class Goals
 {
     private List<BaseGoal> _goals = new List<BaseGoal>();
     private string _fileName = "";
+    private int _totalPointsEarned = 0;
 
     public void GoalToList(BaseGoal goal)
     {
@@ -24,16 +25,19 @@ class Goals
                 switch (split[6])
                 {
                     case "1":
-                        SimpleGoal simpleGoal = new SimpleGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[4]));
+                        SimpleGoal simpleGoal = new SimpleGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[5]), Int32.Parse(split[4]));
                         _goals.Add(simpleGoal);
+                        _totalPointsEarned += simpleGoal.GetPointValue();
                         break;
                     case "∞":
-                        EternalGoal eternalGoal = new EternalGoal(Int32.Parse(split[3]), split[1], split[2], double.PositiveInfinity, Int32.Parse(split[4]));
+                        EternalGoal eternalGoal = new EternalGoal(Int32.Parse(split[3]), split[1], split[2], double.PositiveInfinity, Int32.Parse(split[5]), Int32.Parse(split[4]));
                         _goals.Add(eternalGoal);
+                        _totalPointsEarned += eternalGoal.GetPointValue();
                         break;
                     default:
-                        CheckGoal checkGoal = new CheckGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[4]), Int32.Parse(split[7]));
+                        CheckGoal checkGoal = new CheckGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[5]), Int32.Parse(split[7]), Int32.Parse(split[4]));
                         _goals.Add(checkGoal);
+                        _totalPointsEarned += checkGoal.GetPointValue();
                         break;
                 }
             }
@@ -129,15 +133,10 @@ class Goals
     public void RecordGoalEvent()
     {
         Console.WriteLine("Select a goal to record an event:");
-        for (int i = 0; i < _goals.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {_goals[i].WriteGoal()}");
-
-        }
+        DisplayFile();
 
         int selection = Int32.Parse(Console.ReadLine());
         _goals[selection - 1].RecordEvent();
-        Console.WriteLine($"Event recorded for goal: {_goals[selection - 1]}");
 
     }
 
@@ -147,6 +146,7 @@ class Goals
         {
             Console.WriteLine($"{i + 1}. {_goals[i].WriteGoal()}");
         }
+        Console.WriteLine($"Your total points earned: {_totalPointsEarned}");
     }
 
 }

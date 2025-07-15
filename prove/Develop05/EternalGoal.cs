@@ -2,8 +2,8 @@ class EternalGoal : BaseGoal
 {
     private double infinite = double.PositiveInfinity;
     private double _benchmark;
-    public EternalGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions) :
-    base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions)
+    public EternalGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions, int pointsTotal) :
+    base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions, pointsTotal)
     {
         
         SetMaxCompletions(infinite);

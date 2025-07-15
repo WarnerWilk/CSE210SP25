@@ -1,8 +1,8 @@
 class CheckGoal : BaseGoal
 {
     private int _bonusPoints;
-    public CheckGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions, int bonusPoints) :
-    base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions)
+    public CheckGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions, int bonusPoints, int pointsTotal) :
+    base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions, pointsTotal)
     {
         _bonusPoints = bonusPoints;
     }
@@ -32,11 +32,11 @@ class CheckGoal : BaseGoal
         string goal;
         if (_completed == true)
         {
-            goal = $"[X] {_goalName} {_goalDescription} Point Value: {_pointsValue} Bonus Points Value: {_bonusPoints} Points Earned: {_pointsTotal} Completion: {_completions}#{_maxCompletions}";
+            goal = $"[X] {_goalName} {_goalDescription} Point Value: {_pointsValue} Bonus Points Value: {_bonusPoints} Points Earned: {_pointsTotal} Completion: {_completions}/{_maxCompletions}";
         }
         else
         {
-            goal = $"[ ] {_goalName} {_goalDescription} Point Value: {_pointsValue} Bonus Points Value: {_bonusPoints} Points Earned: {_pointsTotal} Completion: {_completions}#{_maxCompletions}";
+            goal = $"[ ] {_goalName} {_goalDescription} Point Value: {_pointsValue} Bonus Points Value: {_bonusPoints} Points Earned: {_pointsTotal} Completion: {_completions}/{_maxCompletions}";
         }
         return goal;
     }
