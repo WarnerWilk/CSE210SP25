@@ -68,6 +68,20 @@ class BaseGoal
             _completed = true;
         }
     }
+
+    virtual public string WriteGoal()
+    {
+        string goal;
+        if (_completed == true)
+        {
+            goal = $"[X] {_goalName} {_goalDescription} Point Value: {_pointsValue} Points Earned: {_pointsTotal} Completion: {_completions}/{_maxCompletions}";
+        }
+        else
+        {
+            goal = $"[ ] {_goalName} {_goalDescription} Point Value: {_pointsValue} Points Earned: {_pointsTotal} Completion: {_completions}/{_maxCompletions}";
+        }
+        return goal;
+    }
     virtual public string GetGoal()
     {
         string goal;
@@ -77,7 +91,7 @@ class BaseGoal
         }
         else
         {
-            goal = $"[X]#{_goalName}#{_goalDescription}#{_pointsValue}#{_pointsTotal}#{_completions}#{_maxCompletions}";
+            goal = $"[ ]#{_goalName}#{_goalDescription}#{_pointsValue}#{_pointsTotal}#{_completions}#{_maxCompletions}";
         }
         return goal;
     }

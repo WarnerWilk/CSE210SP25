@@ -41,11 +41,14 @@ class Program
                     goals.RecordGoalEvent();
                     break;
                 case "5":
+                case "Display loaded goals":
+                    goals.DisplayFile();
+                    break;
+                case "6":
                 case "Quit":
                     Console.WriteLine("Goodbye!");
                     running = false;
                     break;
-
                 default:
                     Console.WriteLine("Invalid entry. Please try again.");
                     break;

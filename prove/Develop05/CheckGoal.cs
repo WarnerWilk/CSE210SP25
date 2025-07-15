@@ -27,6 +27,19 @@ class CheckGoal : BaseGoal
         }
     }
     
+    override public string WriteGoal()
+    {
+        string goal;
+        if (_completed == true)
+        {
+            goal = $"[X] {_goalName} {_goalDescription} Point Value: {_pointsValue} Bonus Points Value: {_bonusPoints} Points Earned: {_pointsTotal} Completion: {_completions}#{_maxCompletions}";
+        }
+        else
+        {
+            goal = $"[ ] {_goalName} {_goalDescription} Point Value: {_pointsValue} Bonus Points Value: {_bonusPoints} Points Earned: {_pointsTotal} Completion: {_completions}#{_maxCompletions}";
+        }
+        return goal;
+    }
     override public string GetGoal()
     {
         string goal;

@@ -1,10 +1,11 @@
 class EternalGoal : BaseGoal
 {
+    private double infinite = double.PositiveInfinity;
     private double _benchmark;
     public EternalGoal(int pointsValue, string goalName, string goalDescription, double maxCompletions, int totalCompletions) :
     base(pointsValue, goalName, goalDescription, maxCompletions, totalCompletions)
     {
-        double infinite = double.PositiveInfinity;
+        
         SetMaxCompletions(infinite);
         _benchmark = maxCompletions;
     }
@@ -27,5 +28,18 @@ class EternalGoal : BaseGoal
         {
             EarnBonusPoints();
         }
+    }
+    override public string GetGoal()
+    {
+        string goal;
+        if (_completed == true)
+        {
+            goal = $"[X]#{_goalName}#{_goalDescription}#{_pointsValue}#{_pointsTotal}#{_completions}#{infinite}";
+        }
+        else
+        {
+            goal = $"[ ]#{_goalName}#{_goalDescription}#{_pointsValue}#{_pointsTotal}#{_completions}#{infinite}";
+        }
+        return goal;
     }
 }

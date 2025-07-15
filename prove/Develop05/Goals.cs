@@ -3,7 +3,7 @@ using System.Collections;
 class Goals
 {
     private List<BaseGoal> _goals = new List<BaseGoal>();
-private string _fileName = "";
+    private string _fileName = "";
 
     public void GoalToList(BaseGoal goal)
     {
@@ -21,19 +21,19 @@ private string _fileName = "";
             {
 
                 string[] split = goal.Split("#");
-                switch (split[5])
+                switch (split[6])
                 {
                     case "1":
-                        CheckGoal checkGoal = new CheckGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[4]), Int32.Parse(split[5]), Int32.Parse(split[6]));
-                        _goals.Add(checkGoal);
+                        SimpleGoal simpleGoal = new SimpleGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[4]));
+                        _goals.Add(simpleGoal);
                         break;
                     case "∞":
-                        EternalGoal eternalGoal = new EternalGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[4]), Int32.Parse(split[5]));
+                        EternalGoal eternalGoal = new EternalGoal(Int32.Parse(split[3]), split[1], split[2], double.PositiveInfinity, Int32.Parse(split[4]));
                         _goals.Add(eternalGoal);
                         break;
                     default:
-                        SimpleGoal simpleGoal = new SimpleGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[4]), Int32.Parse(split[5]));
-                        _goals.Add(simpleGoal);
+                        CheckGoal checkGoal = new CheckGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[4]), Int32.Parse(split[7]));
+                        _goals.Add(checkGoal);
                         break;
                 }
             }
@@ -45,48 +45,48 @@ private string _fileName = "";
         }
     }
 
-public void SaveGoals()
-{
-    Console.WriteLine($"Would you like to save to {_fileName}? (Y/N)");
-    if (Console.ReadLine().ToUpper() == "N")
+    public void SaveGoals()
     {
-        Console.WriteLine("What file do you want to save your goals to? (Include file extension like 'goals.txt')");
-        _fileName = Console.ReadLine();
-    }
-
-    try
-    {
-        using (StreamWriter writer = new StreamWriter(_fileName))
+        Console.WriteLine($"Would you like to save to {_fileName}? (Y/N)");
+        if (Console.ReadLine().ToUpper() == "N")
         {
-            foreach (BaseGoal goal in _goals)
-            {
-                writer.WriteLine(goal.GetGoal());
-            }
+            Console.WriteLine("What file do you want to save your goals to? (Include file extension like 'goals.txt')");
+            _fileName = Console.ReadLine();
         }
-        Console.WriteLine("Goals saved successfully.");
+
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(_fileName))
+            {
+                foreach (BaseGoal goal in _goals)
+                {
+                    writer.WriteLine(goal.GetGoal());
+                }
+            }
+            Console.WriteLine("Goals saved successfully.");
+        }
+        catch
+        {
+            Console.WriteLine("Invalid filename. Goals not saved.");
+        }
     }
-    catch
+
+    public void NewGoal()
     {
-        Console.WriteLine("Invalid filename. Goals not saved.");
-    }
-}
+        int earnedPoints;
+        int bonusPoints;
+        double maxCompletions = 1;
 
-public void NewGoal()
-{
-    int earnedPoints;
-    int bonusPoints;
-    double maxCompletions = 1;
-    
-    Console.WriteLine("Enter the name of your new goal: ");
-    string goalName = Console.ReadLine();
-    Console.WriteLine("Write a description for the goal.");
-    string goalDescription = Console.ReadLine();
-    Console.WriteLine("What kind of goal do you want to add?");
+        Console.WriteLine("Enter the name of your new goal: ");
+        string goalName = Console.ReadLine();
+        Console.WriteLine("Write a description for the goal.");
+        string goalDescription = Console.ReadLine();
+        Console.WriteLine("What kind of goal do you want to add?");
 
-    Console.WriteLine("1. Simple Goal");
-    Console.WriteLine("2. Checklist Goal");
-    Console.WriteLine("3. Eternal Goal");
-    string input = Console.ReadLine();
+        Console.WriteLine("1. Simple Goal");
+        Console.WriteLine("2. Checklist Goal");
+        Console.WriteLine("3. Eternal Goal");
+        string input = Console.ReadLine();
 
         switch (input)
         {
@@ -120,25 +120,33 @@ public void NewGoal()
                 EternalGoal eternalGoal = new EternalGoal(earnedPoints, goalName, goalDescription, maxCompletions);
                 GoalToList(eternalGoal);
                 break;
-            
-        }
-        
-        Console.WriteLine("Goal added.");
-}
 
-public void RecordGoalEvent()
-{
-    Console.WriteLine("Select a goal to record an event:");
+        }
+
+        Console.WriteLine("Goal added.");
+    }
+
+    public void RecordGoalEvent()
+    {
+        Console.WriteLine("Select a goal to record an event:");
         for (int i = 0; i < _goals.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {_goals[i].GetGoal()}");
-            
+            Console.WriteLine($"{i + 1}. {_goals[i].WriteGoal()}");
+
         }
 
-        // int selection = Int32.Parse(Console.ReadLine());
-        // _goals[selection].RecordEvent();
-        // Console.WriteLine($"Event recorded for goal: {_goals[selection - 1]}");
+        int selection = Int32.Parse(Console.ReadLine());
+        _goals[selection - 1].RecordEvent();
+        Console.WriteLine($"Event recorded for goal: {_goals[selection - 1]}");
 
-}
+    }
+
+    public void DisplayFile()
+    {
+        for (int i = 0; i < _goals.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_goals[i].WriteGoal()}");
+        }
+    }
 
 }
