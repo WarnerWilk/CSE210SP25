@@ -27,17 +27,17 @@ class Goals
                     case "1":
                         SimpleGoal simpleGoal = new SimpleGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[5]), Int32.Parse(split[4]));
                         _goals.Add(simpleGoal);
-                        _totalPointsEarned += simpleGoal.GetPointValue();
+                        _totalPointsEarned += simpleGoal.GetPoints();
                         break;
                     case "∞":
                         EternalGoal eternalGoal = new EternalGoal(Int32.Parse(split[3]), split[1], split[2], double.PositiveInfinity, Int32.Parse(split[5]), Int32.Parse(split[4]));
                         _goals.Add(eternalGoal);
-                        _totalPointsEarned += eternalGoal.GetPointValue();
+                        _totalPointsEarned += eternalGoal.GetPoints();
                         break;
                     default:
                         CheckGoal checkGoal = new CheckGoal(Int32.Parse(split[3]), split[1], split[2], Double.Parse(split[6]), Int32.Parse(split[5]), Int32.Parse(split[7]), Int32.Parse(split[4]));
                         _goals.Add(checkGoal);
-                        _totalPointsEarned += checkGoal.GetPointValue();
+                        _totalPointsEarned += checkGoal.GetPoints();
                         break;
                 }
             }
@@ -137,7 +137,7 @@ class Goals
 
         int selection = Int32.Parse(Console.ReadLine());
         _goals[selection - 1].RecordEvent();
-
+        _totalPointsEarned += _goals[selection - 1].GetPointValue();
     }
 
     public void DisplayFile()
