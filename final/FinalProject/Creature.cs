@@ -2,8 +2,8 @@ using Microsoft.VisualBasic;
 
 class Creature : Card
 {
-    int _power = 0;
-    int _toughness = 0;
+    protected int _power = 0;
+    protected int _toughness = 0;
     
     public Creature(string name, string cardText, List<int> manaCost, bool isLegendary, string colorIdentity, int power, int toughness) :
     base(name, cardText, manaCost, isLegendary, colorIdentity)

@@ -21,4 +21,5 @@ class TapsForMana : Card
     {
         return GetCMC(_generatedMana);
     }
+
 }

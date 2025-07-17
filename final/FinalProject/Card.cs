@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 abstract class Card
 {
     protected string _name, _cardText;
-    protected List<int> _manaCost = [0,0,0,0,0,0];
+    protected List<int> _manaCost = [0, 0, 0, 0, 0, 0];
     protected bool _isLegendary;
     protected string _colorIdentity;
     protected string _cardType;
@@ -71,5 +71,5 @@ abstract class Card
         string cardInfo = $"Card Information:\nName: {_name}\nCard Type: {_cardType}\nMana Cost: {GetCMC(_manaCost)}\nColor Identity: {_colorIdentity}\nCard Text: {_cardText}";
         return cardInfo;
     }
-
+    
 }

@@ -19,11 +19,11 @@ class ManaDork : Creature
         _generatedMana = generatedMana;
         TapMana.SetGeneratedMana(_generatedMana);
     }
-    public string TapDork()
+    virtual public string TapDork()
     {
         return TapMana.ManaTap();
     }
-    
+
     public override string GetCardInfo()
     {
 
@@ -31,4 +31,5 @@ class ManaDork : Creature
 
         return info;
     }
+    
 }
