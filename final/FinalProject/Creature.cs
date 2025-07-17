@@ -11,7 +11,14 @@ class Creature : Card
         _power = power;
         _toughness = toughness;
 
-        _cardType = "Creature";
+        if (isLegendary == false)
+        {
+            _cardType = "Creature";
+        }
+        else
+        {
+            _cardType = "Legendary Creature";
+        }
     }
 
     public override int GetPower()
