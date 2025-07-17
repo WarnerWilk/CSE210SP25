@@ -39,9 +39,13 @@ abstract class Card
     {
         return _isLegendary;
     }
-    abstract public int GetPower();
-    abstract public void TakeDamage(int damage);
-    abstract public List<int> ManaTap();
+    virtual public int GetPower()
+    {
+        return 0;
+    }
+    virtual public void TakeDamage(int damage)
+    {
+    }
 
     public string GetCMC(List<int> mana) //returns the decoded mana cost
     {

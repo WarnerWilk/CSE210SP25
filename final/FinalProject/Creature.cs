@@ -19,11 +19,6 @@ class Creature : Card
         return _power;
     }
 
-    public override List<int> ManaTap()
-    {
-        return _manaTap;
-    }
-
     public override void TakeDamage(int damage)
     {
         if (damage >= _toughness)
