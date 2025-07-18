@@ -19,6 +19,12 @@ class ManaDork : Creature
         _generatedMana = generatedMana;
         TapMana.SetGeneratedMana(_generatedMana);
     }
+
+    public ManaDork() : base()
+    {
+        
+    }
+    
     virtual public string TapDork()
     {
         return TapMana.ManaTap();

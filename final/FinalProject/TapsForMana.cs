@@ -12,6 +12,11 @@ class TapsForMana : Card
         _generatedMana = generatedMana;
     }
 
+    public TapsForMana() : base()
+    {
+        
+    }
+
     public void SetGeneratedMana(List<int> generatedMana)
     {
         _generatedMana = generatedMana;

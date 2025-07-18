@@ -21,6 +21,11 @@ class Creature : Card
         }
     }
 
+    public Creature() : base()
+    {
+        
+    }
+
     public override int GetPower()
     {
         return _power;

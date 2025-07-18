@@ -18,6 +18,11 @@ class Vehicle : Creature
         }
     }
 
+    public Vehicle() : base()
+    {
+        
+    }
+
     public void Crew(int creaturePower)
     {
         if (creaturePower >= _crew)

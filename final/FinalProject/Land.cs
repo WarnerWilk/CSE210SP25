@@ -37,6 +37,12 @@ class Land : TapsForMana
                 break;
         }
     }
+
+    public Land() : base()
+    {
+        
+    }
+
     public override string ManaTap()
     {
         if (_shockManaDamage > 0)

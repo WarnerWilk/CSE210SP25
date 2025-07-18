@@ -13,8 +13,13 @@ class ManaRock : TapsForMana
         {
             _cardType = "Legendary Artifact";
         }
+    }
+
+    public ManaRock()
+    {
 
     }
+
     public override string ManaTap()
     {
         if (_shockManaDamage > 0)
