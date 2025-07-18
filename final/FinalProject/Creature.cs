@@ -4,7 +4,7 @@ class Creature : Card
 {
     protected int _power = 0;
     protected int _toughness = 0;
-    
+
     public Creature(string name, string cardText, List<int> manaCost, bool isLegendary, string colorIdentity, int power, int toughness) :
     base(name, cardText, manaCost, isLegendary, colorIdentity)
     {
@@ -42,5 +42,14 @@ class Creature : Card
 
         string info = base.GetCardInfo() + $"\nPower: {_power}\nToughness: {_toughness}";
         return info;
+    }
+    public override void CreateCard()
+    {
+        base.CreateCard();
+        Console.WriteLine("What is the creature's power?");
+        _power = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("What is the creature's toughness?");
+        _toughness = Int32.Parse(Console.ReadLine());
     }
 }

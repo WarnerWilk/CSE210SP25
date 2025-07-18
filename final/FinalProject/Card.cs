@@ -8,7 +8,7 @@ abstract class Card
     protected bool _isLegendary;
     protected string _colorIdentity;
     protected string _cardType;
-    protected Card(string name, string cardText, List<int> manaCost, bool isLegendary, string colorIdentity)
+    public Card(string name, string cardText, List<int> manaCost, bool isLegendary, string colorIdentity)
     {
         _name = name;
         _cardText = cardText;
@@ -16,17 +16,23 @@ abstract class Card
         _isLegendary = isLegendary;
         _colorIdentity = colorIdentity;
     }
-    protected Card(string name, List<int> manaCost)
+    public Card(string name, List<int> manaCost)
     {
         _name = name;
         _manaCost = manaCost;
         _isLegendary = false;
     }
-    protected Card(string name)
+    public Card(string name)
     {
         _name = name;
         _isLegendary = false;
     }
+
+    public Card()
+    {
+        //To create a blank card. The blank card can be filled in with information using CreateCard()
+    }
+
     public string GetCardName()
     {
         return _name;
@@ -71,5 +77,43 @@ abstract class Card
         string cardInfo = $"Card Information:\nName: {_name}\nCard Type: {_cardType}\nMana Cost: {GetCMC(_manaCost)}\nColor Identity: {_colorIdentity}\nCard Text: {_cardText}";
         return cardInfo;
     }
-    
+
+    virtual public void CreateCard()
+    {
+        Console.Write("Enter card name: ");
+        _name = Console.ReadLine();
+
+        Console.Write("Enter card text: ");
+        _cardText = Console.ReadLine();
+
+        Console.Write("Is the card legendary? (true/false): ");
+        while (!bool.TryParse(Console.ReadLine(), out _isLegendary))
+        {
+            Console.Write("Please enter 'true' or 'false': ");
+        }
+
+        Console.Write("Enter color identity: ");
+        _colorIdentity = Console.ReadLine();
+
+        Console.Write("Enter card type(e.g. Creature, Mana Dork, Mana Rock, Vehicle, Land): ");
+        _cardType = Console.ReadLine();
+
+        Console.WriteLine("How much red mana does the card cost to cast?");
+        _manaCost[0] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much green mana does the card cost to cast?");
+        _manaCost[1] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much blue mana does the card cost to cast?");
+        _manaCost[2] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much white mana does the card cost to cast?");
+        _manaCost[3] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much black mana does the card cost to cast?");
+        _manaCost[4] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much colorless mana does the card cost to cast?");
+        _manaCost[5] = Int32.Parse(Console.ReadLine());
+    }
 }

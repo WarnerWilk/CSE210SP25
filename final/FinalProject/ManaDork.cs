@@ -31,5 +31,25 @@ class ManaDork : Creature
 
         return info;
     }
-    
+    public override void CreateCard()
+    {
+        base.CreateCard();
+        Console.WriteLine("How much red mana does the card tap for?");
+        _generatedMana[0] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much green mana does the card tap for?");
+        _generatedMana[1] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much blue mana does the card tap for?");
+        _generatedMana[2] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much white mana does the card tap for?");
+        _generatedMana[3] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much black mana does the card tap for?");
+        _generatedMana[4] = Int32.Parse(Console.ReadLine());
+
+        Console.WriteLine("How much colorless mana does the card tap for?");
+        _generatedMana[5] = Int32.Parse(Console.ReadLine());        
+    }
 }

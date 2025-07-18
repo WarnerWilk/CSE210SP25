@@ -45,4 +45,16 @@ class Land : TapsForMana
         }
         return base.ManaTap();
     }
+
+    public override void CreateCard()
+    {
+        base.CreateCard();
+
+        Console.WriteLine($"Does this land deal damage to you when it is tapped?(Y/N)");
+        if (Console.ReadLine().ToUpper() == "Y")
+        {
+            Console.WriteLine("How much damage does this do?");
+            _shockManaDamage = Int32.Parse(Console.ReadLine());
+        }
+    }
 }

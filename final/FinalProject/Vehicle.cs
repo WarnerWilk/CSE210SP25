@@ -56,4 +56,11 @@ class Vehicle : Creature
             Console.WriteLine($"{_name} isn't crewed!");
         }
     }
+    public override void CreateCard()
+    {
+        base.CreateCard();
+
+        Console.WriteLine($"What is the crew value for this vehicle?");
+        _crew = Int32.Parse(Console.ReadLine());
+    }
 }
