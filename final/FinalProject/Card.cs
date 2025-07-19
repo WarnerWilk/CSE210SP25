@@ -95,9 +95,6 @@ abstract class Card
         Console.Write("Enter color identity: ");
         _colorIdentity = Console.ReadLine();
 
-        Console.Write("Enter card type(e.g. Creature, Mana Dork, Mana Rock, Vehicle, Land): ");
-        _cardType = Console.ReadLine();
-
         Console.WriteLine("How much red mana does the card cost to cast?");
         _manaCost[0] = Int32.Parse(Console.ReadLine());
 

@@ -1,7 +1,7 @@
 class Deck
 {
     List<Card> _cards = [];
-
+    Random rand = new Random();
     public void NewCard()
     {
         Console.Write("Enter card type (e.g. Creature, Mana Dork, Mana Rock, Vehicle, Land): ");
@@ -45,11 +45,79 @@ class Deck
         }
     }
 
+    public string GetCardInfo(string cardName)
+    {
+        string response = "";
+        foreach (Card card in _cards)
+        {
+            if (card.GetCardName() == cardName)
+            {
+                response = card.GetCardInfo();
+            }
+            else
+            {
+                response = "Card not found.";
+            }
+        }
+        return response;
+    }
+
     public void DisplayAllCards()
     {
         foreach (Card card in _cards)
         {
             Console.WriteLine(card.GetCardInfo());
+        }
+    }
+    public string GetRandomCard()
+    {
+        return _cards[rand.Next()].GetCardInfo();
+    }
+
+    public void DefendWithCreature(string cardName, int power)
+    {
+        foreach (Creature card in _cards)
+        {
+            if (card.GetCardName() == cardName)
+            {
+                card.TakeDamage(power);
+                break;
+            }
+        }
+        Console.WriteLine("Card not found.");
+    }
+
+    public void TapForMana(string cardName)
+    {
+        foreach (TapsForMana card in _cards)
+        {
+            if (card.GetCardName() == cardName)
+            {
+                card.ManaTap();
+                break;
+            }
+        }
+        Console.WriteLine("Card not found.");
+    }
+    public void CrewVehicle(string vehicleName, string creatureName)
+    {
+        int creaturePower = 0;
+        
+
+        foreach (Creature card in _cards)
+        {
+            if (card.GetCardName() == creatureName)
+            {
+                creaturePower = card.GetPower();
+            }
+        }
+        
+        foreach (Vehicle card in _cards)
+        {
+            if (card.GetCardName() == vehicleName)
+            {
+                card.Crew(creaturePower);
+            }
         }
     }
 }
